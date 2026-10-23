@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#3B1025">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Айсулу, моя любовь ❤️</title>
+  <meta name="description" content="Маленький мир, который я создал только для тебя.">
+
+  <!-- Favicon-сердце без дополнительных файлов -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9D%A4%EF%B8%8F%3C/text%3E%3C/svg%3E">
+
+  <!-- Шрифты: необязательное украшение. Без интернета сайт использует запасные шрифты. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Lora:ital,wght@0,400;0,500;1,400&family=Marck+Script&display=swap">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="is-locked">
+  <noscript>
+    <p style="padding:1.5rem;font-family:sans-serif;color:#fff;background:#3B1025;margin:0">
+      Айсулу, чтобы открыть сюрприз, включи JavaScript в браузере ❤️
+    </p>
+  </noscript>
+
+  <div class="bg" aria-hidden="true"></div>
+  <div class="ambient" id="ambient" aria-hidden="true"></div>
+  <div class="hearts-layer" id="heartsLayer" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <!-- ============ СТАРТОВЫЙ ЭКРАН ============ -->
+  <section class="intro" id="intro" aria-labelledby="introTitle">
+    <div class="intro-card">
+      <div class="envelope" aria-hidden="true">💌</div>
+      <h1 class="intro-title" id="introTitle">Айсулу, любимая, ❤️</h1>
+      <div class="intro-text">
+        <p>Я приготовил для тебя кое-что особенное.</p>
+        <p>Знаю, что сейчас ты занята нашей маленькой Рафией, поэтому хочу, чтобы ты открыла этот сюрприз тогда, когда доченька уснёт и у тебя появится хотя бы немного времени для себя.</p>
+        <p>Устройся поудобнее, выдохни и просто побудь немного со мной, даже если сейчас между нами километры.</p>
+        <p>Я хочу подарить тебе несколько минут тепла, улыбок и напомнить, насколько сильно я тебя люблю.</p>
+        <p>Этот маленький мир я создал только для тебя.</p>
+        <p class="intro-ask">Готова, моя любовь? ❤️</p>
+      </div>
+      <button class="btn btn-primary btn-big" id="openBtn" type="button">Открыть мой сюрприз 💌</button>
+    </div>
+  </section>
+
+  <!-- Кнопка музыки -->
+  <button class="music-btn" id="musicBtn" type="button" aria-pressed="false" hidden>
+    <span class="music-dot" aria-hidden="true"></span>
+    <span id="musicLabel">Включить нашу музыку ♫</span>
+  </button>
+
+  <!-- Кнопка «наверх» -->
+  <button class="to-top" id="toTop" type="button" aria-label="Вернуться к началу страницы">↑</button>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <main id="main" hidden>
+
+    <!-- ============ 1. ГЛАВНОЕ ПОЗДРАВЛЕНИЕ ============ -->
+    <section class="hero" id="hero" aria-labelledby="heroTitle">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="kicker reveal">Для самой любимой женщины в моей жизни</p>
+          <h2 class="hero-title reveal d1" id="heroTitle">
+            С днём рождения,<br>моя Айсулу! <span class="beat-heart" aria-hidden="true">❤️</span>
+          </h2>
+          <p class="hero-lead reveal d2">
+            Сегодня тебе 24, и я хочу, чтобы ты знала:<br>
+            ты — одно из самых прекрасных событий в моей жизни.
+          </p>
+          <p class="hero-sign reveal d3">От твоего мужа, который очень скучает и считает дни до встречи.</p>
+          <div class="hero-actions reveal d3">
+            <button class="btn btn-primary" type="button" data-scroll="#letterTop">Открой своё письмо ❤️</button>
+            <button class="btn btn-ghost" type="button" data-scroll="#gallery">Наша история ✨</button>
+          </div>
+        </div>
+
+        <div class="hero-photo reveal d2">
+          <div class="frame">
+            <div class="frame-inner js-photo">
+              <img src="images/family-main.jpg" alt="Наша семья: Айсулу, я и Рафия" decoding="async" fetchpriority="high">
+              <div class="ph" aria-hidden="true">
+                <span class="ph-heart">♥</span>
+                <span>Здесь будет наша любимая фотография</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-cue" aria-hidden="true"><span>листай</span><i></i></div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><span>♥</span></div>
+
+    <!-- ============ 2. ПИСЬМО ============ -->
+    <section class="section" id="letter" aria-labelledby="letterTitle">
+      <div class="container">
+        <h2 class="section-title reveal" id="letterTitle">Моё письмо тебе</h2>
+        <p class="section-sub reveal d1">Я писал его от всего сердца</p>
+
+        <article class="letter reveal" id="letterTop">
+          <p class="letter-salutation">Моя любимая Айсулу!</p>
+          <p>С днём рождения, моя родная! ❤️</p>
+          <p>Сегодня тебе исполняется 24 года, и мне так хочется быть рядом с тобой. Обнять тебя крепко-крепко, поцеловать, посмотреть тебе в глаза и лично сказать всё, что сейчас у меня на сердце.</p>
+          <p>Но сегодня я далеко, на вахте. И, наверное, именно на расстоянии особенно сильно понимаешь, насколько дорог тебе человек.</p>
+          <p>Я хочу, чтобы ты знала одну вещь: всё, что я делаю, все мои старания, работа, бессонные дни и планы на будущее — всё это ради нас. Ради нашей семьи, ради нашего дома, ради того, чтобы у нас с тобой и нашей доченькой была счастливая жизнь.</p>
+          <p>Я знаю, что сейчас тебе бывает непросто. Пока я нахожусь на работе, ты каждый день рядом с нашей малышкой. Заботишься о ней, растишь её, успокаиваешь, даришь ей свою нежность и любовь. И я хочу сказать тебе огромное спасибо за это.</p>
+          <p class="letter-accent">Спасибо, что подарила мне самое большое счастье в моей жизни — нашу доченьку. ❤️</p>
+          <p>Когда я думаю о том, ради чего стараюсь и куда иду, я всегда думаю о вас двоих. О твоей улыбке, о нашей малышке, о том, как мы будем проводить время вместе, как будем путешествовать, смеяться, обустраивать нашу жизнь и создавать воспоминания, которые останутся с нами на долгие годы.</p>
+          <p>Я хочу, чтобы ты всегда чувствовала себя любимой женщиной. Не только сегодня, в свой день рождения, но и в обычные дни, когда нет повода для праздника. Когда ты устаёшь, когда тебе грустно, когда тебе нужна поддержка или просто хочется, чтобы я был рядом.</p>
+          <p>Я не обещаю, что в нашей жизни всегда всё будет легко. Но я обещаю, что буду стараться ради нас, поддерживать тебя, заботиться о нашей семье и делать всё возможное, чтобы ты чувствовала: рядом с тобой человек, на которого можно положиться.</p>
+          <p>Ты для меня не просто жена. Ты мой родной человек, моя любовь, моя семья и часть того будущего, которое я хочу построить.</p>
+          <p class="letter-accent">И если бы мне снова пришлось выбирать, с кем пройти этот путь, я бы снова выбрал тебя.</p>
+          <p>С каждым годом я всё лучше понимаю, что настоящее счастье — это не что-то огромное и недостижимое. Это когда мы вместе. Когда наша доченька улыбается. Когда ты рядом. Когда после тяжёлого дня я возвращаюсь домой и знаю, что там мои любимые девочки.</p>
+          <p class="letter-accent">Я очень сильно люблю тебя, Айсулу.</p>
+          <p>С 24-летием, моя родная!</p>
+          <p>Пусть у тебя будет больше поводов улыбаться, больше счастливых моментов, больше отдыха и заботы о тебе самой. Я хочу, чтобы ты была счастлива не только как мама и жена, но и просто как прекрасная женщина, у которой есть свои мечты, желания и цели.</p>
+          <p>Береги себя, моя любовь. Спасибо, что ты у меня есть.</p>
+          <p>Я скучаю по тебе. Скучаю по нашей доченьке. И очень жду момента, когда смогу снова обнять вас обеих.</p>
+          <p>С днём рождения, моя любимая жена.</p>
+          <p class="letter-signature">
+            Твой муж.<br>
+            <span>Тот, кто любит тебя всем сердцем. ❤️</span>
+          </p>
+        </article>
+
+        <div class="center reveal">
+          <button class="btn btn-ghost" type="button" data-scroll="#letterTop">Прочитать письмо ещё раз</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><span>♥</span></div>
+
+    <!-- ============ 3. ГАЛЕРЕЯ ============ -->
+    <section class="section" id="gallery" aria-labelledby="galleryTitle">
+      <div class="container">
+        <h2 class="section-title reveal" id="galleryTitle">Наши маленькие моменты — моё большое счастье</h2>
+        <p class="section-sub reveal d1">Каждая фотография хранит частичку нашей истории</p>
+
+        <!--
+          Альбом: 10 мест. Положи свои фото в папку images/ под именами photo-1.jpg … photo-10.jpg.
+          • Если фото 6–10 нет — эти карточки автоматически скрываются.
+          • Если нет фото 1–5 — показывается аккуратная заглушка.
+          Подписи можно менять прямо здесь, в <figcaption>.
+        -->
+        <div class="album">
+          <figure class="photo-card js-photo reveal" data-slot="1">
+            <button class="photo-btn" type="button" aria-label="Открыть фотографию 1 в большом размере">
+              <span class="photo-frame">
+                <img src="images/photo-1.jpg" alt="С тобой даже обычные дни становятся особенными" decoding="async">
+                <span class="ph" aria-hidden="true"><span class="ph-heart">♥</span><span>Здесь будет наше фото</span></span>
+              </span>
+            </button>
+            <figcaption>С тобой даже обычные дни становятся особенными.</figcaption>
+          </figure>
+
+          <figure class="photo-card js-photo reveal d1" data-slot="2">
+            <button class="photo-btn" type="button" aria-label="Открыть фотографию 2 в большом размере">
+              <span class="photo-frame">
+                <img src="images/photo-2.jpg" alt="Мой любимый человек" decoding="async">
+                <span class="ph" aria-hidden="true"><span class="ph-heart">♥</span><span>Здесь будет наше фото</span></span>
+              </span>
+            </button>
+            <figcaption>Мой любимый человек.</figcaption>
+          </figure>
+
+          <figure class="photo-card js-photo reveal d2" data-slot="3">
+            <button class="photo-btn" type="button" aria-label="Открыть фотографию 3 в большом размере">
+              <span class="photo-frame">
+                <img src="images/photo-3.jpg" alt="Наша маленькая вселенная" decoding="async">
+                <span class="ph" aria-hidden="true"><span class="ph-heart">♥</span><span>Здесь будет наше фото</span></span>
+              </span>
+            </button>
+            <figcaption>Наша маленькая вселенная.</figcaption>
+          </figure>
+
+          <figure class="photo-card js-photo reveal" data-slot="4">
+            <button class="photo-btn" type="button" aria-label="Открыть фотографию 4 в большом размере">
+              <span class="photo-frame">
+                <img src="images/photo-4.jpg" alt="Моменты, которые хочется сохранить навсегда" decoding="async">
+                <span class="ph" aria-hidden="true"><span class="ph-heart">♥</span><span>Здесь будет наше фото</span></span>
+              </span>
+            </button>
+            <figcaption>Моменты, которые хочется сохранить навсегда.</figcaption>
+          </figure>
+
+          <figure class="photo-card js-photo reveal d1" data-slot="5">
+            <button class="photo-btn" type="button" aria-label="Открыть фотографию 5 в большом размере">
+              <span class="photo-frame">
+                <img src="images/photo-5.jpg" alt="Ты — моё спокойствие и моё счастье" decoding="async">
+                <span class="ph" aria-hidden="true"><span class="ph-heart">♥</span><span>Здесь будет наше фото</span></span>
+              </span>
+            </button>
+            <figcaption>Ты — моё спокойствие и моё счастье.</figcaption>
+          </figure>
+
+          <figure class="photo-card js-photo reveal d2" data-slot="6">
+            <button class="photo-btn" type="button" aria-label="Открыть фотографию 6 в большом размере">
+              <span class="photo-frame">
+                <img src="images/photo-6.jpg" alt="Всё самое важное — это мы" decoding="async">
+                <span class="ph" aria-hidden="true"><span class="ph-heart">♥</span><span>Здесь будет наше фото</span></span>
+              </span>
+            </button>
+            <figcaption>Всё самое важное — это мы.</figcaption>
+          </figure>
+
+          <figure class="photo-card js-photo reveal" data-slot="7">
+            <button class="photo-btn" type="button" aria-label="Открыть фотографию 7 в большом размере">
+              <span class="photo-frame">
+                <img src="images/photo-7.jpg" alt="Твоя улыбка — моё любимое место на свете" decoding="async">
+                <span class="ph" aria-hidden="true"><span class="ph-heart">♥</span><span>Здесь будет наше фото</span></span>
+              </span>
+            </button>
+            <figcaption>Твоя улыбка — моё любимое место на свете.</figcaption>
+          </figure>
+
+          <figure class="photo-card js-photo reveal d1" data-slot="8">
+            <button class="photo-btn" type="button" aria-label="Открыть фотографию 8 в большом размере">
+              <span class="photo-frame">
+                <img src="images/photo-8.jpg" alt="Наши обычные дни — самые дорогие" decoding="async">
+                <span class="ph" aria-hidden="true"><span class="ph-heart">♥</span><span>Здесь будет наше фото</span></span>
+              </span>
+            </button>
+            <figcaption>Наши обычные дни — самые дорогие.</figcaption>
+          </figure>
+
+          <figure class="photo-card js-photo reveal d2" data-slot="9">
+            <button class="photo-btn" type="button" aria-label="Открыть фотографию 9 в большом размере">
+              <span class="photo-frame">
+                <img src="images/photo-9.jpg" alt="Мы втроём — и мир становится ярче" decoding="async">
+                <span class="ph" aria-hidden="true"><span class="ph-heart">♥</span><span>Здесь будет наше фото</span></span>
+              </span>
+            </button>
+            <figcaption>Мы втроём — и мир становится ярче.</figcaption>
+          </figure>
+
+          <figure class="photo-card js-photo reveal" data-slot="10">
+            <button class="photo-btn" type="button" aria-label="Открыть фотографию 10 в большом размере">
+              <span class="photo-frame">
+                <img src="images/photo-10.jpg" alt="Спасибо, что ты рядом" decoding="async">
+                <span class="ph" aria-hidden="true"><span class="ph-heart">♥</span><span>Здесь будет наше фото</span></span>
+              </span>
+            </button>
+            <figcaption>Спасибо, что ты рядом.</figcaption>
+          </figure>
+        </div>
+        <p class="album-hint reveal">Нажми на фотографию, чтобы рассмотреть её поближе</p>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><span>♥</span></div>
+
+    <!-- ============ 4. СЕКРЕТ ============ -->
+    <section class="section" id="secret" aria-labelledby="secretTitle">
+      <div class="container narrow">
+        <p class="kicker center reveal">Ещё одна причина улыбнуться</p>
+        <div class="secret reveal d1" id="secretCard">
+          <h2 class="secret-title" id="secretTitle">Айсулу, здесь спрятано кое-что для тебя… 💌</h2>
+          <div class="secret-body" id="secretBody">
+            <div>
+              <div class="secret-text">
+                <p>Если бы сейчас у меня была возможность загадать только одно желание, я бы загадал не деньги, не подарки и не что-то материальное.</p>
+                <p>Я бы загадал, чтобы мои любимые девочки были здоровы и счастливы, чтобы у нас было много времени друг для друга и чтобы я мог как можно чаще обнимать вас обеих.</p>
+                <p>Всё остальное мы обязательно построим вместе.</p>
+                <p class="secret-end">Я люблю вас. ❤️</p>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="secretBtn" type="button" aria-expanded="false" aria-controls="secretBody">Открыть секрет</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"><span>♥</span></div>
+
+    <!-- ============ 5. ПЕРЕД ИГРОЙ ============ -->
+    <section class="section" id="prepuzzle" aria-labelledby="prepuzzleTitle">
+      <div class="container narrow center">
+        <h2 class="section-title reveal" id="prepuzzleTitle">У меня для тебя осталось ещё кое-что</h2>
+        <div class="prepuzzle-text reveal d1">
+          <p>Моя любимая, у меня для тебя осталось ещё кое-что.</p>
+          <p>Помнишь, как из маленьких моментов складывается наша история?</p>
+          <p>Теперь я хочу, чтобы ты сама собрала то, что для меня дороже всего.</p>
+          <p class="intro-ask">Готова? ❤️</p>
+        </div>
+        <div class="reveal d2">
+          <button class="btn btn-primary btn-big" id="openPuzzleBtn" type="button" aria-expanded="false" aria-controls="puzzleSection">Собрать наше счастье 💗</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. ПАЗЛ ============ -->
+    <section class="section puzzle" id="puzzleSection" data-src="images/puzzle-photo.jpg" aria-labelledby="puzzleTitle" hidden>
+      <div class="container">
+        <h2 class="section-title" id="puzzleTitle">Собери нашу любовь ❤️</h2>
+        <p class="section-sub">Даже самые прекрасные моменты складываются из маленьких частей. Как и наша история.</p>
+
+        <div class="puzzle-stage" id="puzzleStage">
+          <div class="board" id="board" role="group" aria-label="Игровое поле пазла: девять частей"></div>
+          <div class="hint-layer" id="hintLayer" aria-hidden="true"></div>
+
+          <div class="board-msg" id="boardMsg" hidden>
+            <p id="boardMsgText"></p>
+            <button class="btn btn-primary" id="retryBtn" type="button" hidden>Загрузить снова</button>
+          </div>
+
+          <div class="win-overlay" id="winOverlay" hidden>
+            <p class="win-line">Вот так я вижу своё счастье.</p>
+            <p class="win-line">Ты, я и наша доченька.</p>
+            <p class="win-line win-line-big">И именно ради этого я стараюсь каждый день. ❤️</p>
+          </div>
+        </div>
+
+        <div class="puzzle-bar">
+          <p class="moves" aria-live="polite">Ходов: <strong id="movesCount">0</strong></p>
+          <div class="puzzle-buttons">
+            <button class="btn btn-ghost" id="restartBtn" type="button" disabled>Начать заново</button>
+            <button class="btn btn-ghost" id="hintBtn" type="button" disabled>Показать подсказку</button>
+            <button class="btn btn-ghost" id="peekBtn" type="button" hidden>Посмотреть фото</button>
+            <button class="btn btn-ghost" id="pickBtn" type="button">Выбрать фото с устройства</button>
+          </div>
+          <input type="file" id="photoInput" accept="image/*" hidden>
+        </div>
+        <p class="puzzle-help">Перетащи часть на другое место — или коснись двух частей по очереди, и они поменяются местами.<br>Фото остаётся на твоём устройстве и никуда не отправляется.</p>
+
+        <!-- Появляется ТОЛЬКО после правильной сборки -->
+        <div class="win-panel" id="winPanel" hidden>
+          <div class="win-text">
+            <p>Айсулу, я хочу, чтобы ты всегда помнила: какие бы трудности ни встречались на нашем пути, для меня самое главное — наша семья.</p>
+            <p>Я могу находиться далеко, уставать на работе и скучать по вам, но я всегда помню, ради чего всё это делаю.</p>
+            <p class="lines">Я хочу возвращаться домой к вам.<br>Хочу видеть твою улыбку.<br>Хочу обнимать нашу малышку.<br>Хочу, чтобы у нас было много счастливых лет впереди.</p>
+            <p class="lines">Спасибо тебе за нашу доченьку.<br>Спасибо за твою любовь.<br>Спасибо за то, что ты — моя жена.</p>
+            <p class="win-love">Я очень сильно люблю тебя, моя Айсулу.</p>
+            <p class="win-love">С днём рождения, моя родная! ❤️</p>
+          </div>
+
+          <div class="hug">
+            <button class="btn btn-ghost" id="hugBtn" type="button">Обнять тебя через экран ❤️</button>
+            <p class="hug-text" id="hugText" hidden>Представь, что я сейчас крепко-крепко обнимаю тебя и целую в лоб. Я очень тебя люблю, Айсулу.</p>
+          </div>
+
+          <button class="btn btn-primary btn-big" id="lastBtn" type="button" aria-expanded="false" aria-controls="finale">Моё последнее послание тебе 💌</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. ФИНАЛ ============ -->
+    <section class="finale" id="finale" aria-labelledby="finaleTitle" hidden>
+      <div class="container narrow center">
+        <h2 class="finale-title reveal" id="finaleTitle">С днём рождения,<br>моя Айсулу! ❤️</h2>
+        <p class="finale-years reveal d1">24 года твоей прекрасной жизни.<br>И я счастлив быть частью твоей истории.</p>
+
+        <div class="divider small" aria-hidden="true"><span>♥</span></div>
+
+        <div class="finale-text">
+          <p class="reveal">Если бы мне снова пришлось выбирать свою семью, я бы снова выбрал тебя.</p>
+          <p class="lines reveal">Без сомнений.<br>Без колебаний.<br>Снова и снова.</p>
+          <p class="lines reveal">Ты — моя любовь.<br>Рафия — наше счастье.<br>А вы обе — причина, по которой я каждый день стараюсь становиться лучше.</p>
+          <p class="reveal">С 24-летием, моя любимая Айсулу.</p>
+          <p class="lines reveal">Я очень скучаю по вам.<br>И уже жду момента, когда снова смогу обнять вас обеих.</p>
+          <p class="finale-far reveal">Я далеко только физически.<br>Всё моё сердце — рядом с тобой.</p>
+        </div>
+
+        <figure class="finale-photo reveal">
+          <div class="frame">
+            <div class="frame-inner js-photo">
+              <img src="images/family-final.jpg" alt="Мы втроём: Айсулу, я и наша доченька Рафия" decoding="async">
+              <div class="ph" aria-hidden="true">
+                <span class="ph-heart">♥</span>
+                <span>Здесь будет наша любимая фотография</span>
+              </div>
+            </div>
+          </div>
+          <figcaption>Ты + я + наша доченька.<br>Моя любимая семья. Моё счастье. Мой дом.</figcaption>
+        </figure>
+
+        <p class="forever reveal">Навсегда твой. ❤️</p>
+
+        <div class="reveal">
+          <button class="btn btn-ghost" id="backTopBtn" type="button">Вернуться в начало</button>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <p>Сделано с любовью — только для тебя ♥</p>
+    </footer>
+  </main>
+
+  <!-- ============ ПРОСМОТР ФОТО НА ВЕСЬ ЭКРАН ============ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии" hidden>
+    <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Закрыть (Esc)">✕</button>
+    <button class="lb-btn lb-nav lb-prev" id="lbPrev" type="button" aria-label="Предыдущее фото">‹</button>
+    <figure class="lb-stage" id="lbStage">
+      <img id="lbImg" alt="" draggable="false">
+      <div class="lb-ph" id="lbPh" hidden><span class="ph-heart">♥</span><span>Здесь будет наша фотография</span></div>
+      <figcaption id="lbCaption"></figcaption>
+    </figure>
+    <button class="lb-btn lb-nav lb-next" id="lbNext" type="button" aria-label="Следующее фото">›</button>
+    <p class="lb-count" id="lbCount" aria-live="polite"></p>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
